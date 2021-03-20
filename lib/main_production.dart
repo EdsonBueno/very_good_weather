@@ -10,10 +10,16 @@ import 'dart:developer';
 
 import 'package:flutter/widgets.dart';
 import 'package:bloc/bloc.dart';
+import 'package:hydrated_bloc/hydrated_bloc.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:very_good_weather/app/app.dart';
 import 'package:very_good_weather/app/app_bloc_observer.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  HydratedBloc.storage = await HydratedStorage.build(
+      storageDirectory: await getTemporaryDirectory(),
+  );
   Bloc.observer = AppBlocObserver();
   FlutterError.onError = (details) {
     log(details.exceptionAsString(), stackTrace: details.stack);

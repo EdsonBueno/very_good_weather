@@ -3,5 +3,21 @@
     "counterAppBarTitle": "Counter",
     "@counterAppBarTitle": {
         "description": "Text shown in the AppBar of the Counter Page"
+    },
+    "temperatureUnitPickerTitle": "Temperature Unit",
+    "@temperatureUnitPickerTitle": {
+        "description": "Text shown as the title of the Temperature Unit Picker"
+    },
+    "temperatureUnitPickerCancelAction": "Cancel",
+    "@temperatureUnitPickerCancelAction": {
+        "description": "Text shown in the Cancel action of the Temperature Unit Picker"
+    },
+    "fahrenheitTemperatureUnitPickerOption": "Fahrenheit",
+    "@fahrenheitTemperatureUnitPickerOption": {
+        "description": "Text shown for the Fahrenheit option in the Temperature Unit Picker"
+    },
+    "celsiusTemperatureUnitPickerOption": "Celsius",
+    "@celsiusTemperatureUnitPickerOption": {
+        "description": "Text shown for the Celsius option in the Temperature Unit Picker"
     }
 }
