@@ -19,5 +19,13 @@
     "celsiusTemperatureUnitPickerOption": "Celsius",
     "@celsiusTemperatureUnitPickerOption": {
         "description": "Text shown for the Celsius option in the Temperature Unit Picker"
+    },
+    "weatherLocationSearchBarHint": "San Francisco",
+    "@weatherLocationSearchBarHint": {
+        "description": "Text shown as the search bar's hint in the Weather Page."
+    },
+    "weatherLocationSearchBarLabel": "City",
+    "@weatherLocationSearchBarLabel": {
+        "description": "Text shown as the search bar's label in the Weather Page."
     }
 }

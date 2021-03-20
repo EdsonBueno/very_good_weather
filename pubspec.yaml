@@ -17,6 +17,8 @@ dependencies:
   hydrated_bloc: ^7.0.0
   enum_to_string: ^2.0.1
   path_provider: ^2.0.1
+  equatable: ^2.0.0
+  rxdart: ^0.26.0
 
 dev_dependencies:
   flutter_test:
