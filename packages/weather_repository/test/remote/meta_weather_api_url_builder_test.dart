@@ -4,7 +4,9 @@ import 'package:weather_repository/src/remote/meta_weather_api_url_builder.dart'
 void main() {
   group('MetaWeatherApiUrlBuilder', () {
     const baseUrl = 'https://www.metaweather.com/api/location';
+
     late MetaWeatherApiUrlBuilder urlBuilder;
+
     setUp(() {
       urlBuilder = MetaWeatherApiUrlBuilder(baseUrl: baseUrl);
     });
