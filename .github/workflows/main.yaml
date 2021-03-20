@@ -1,9 +1,14 @@
 name: very_good_weather
 
-on: [pull_request, push]
-  branches:
-    - master
-    - develop
+on:
+  push:
+    branches:
+      - main
+      - develop
+  pull_request:
+    branches:
+      - main
+      - develop
 
 jobs:
   build:
