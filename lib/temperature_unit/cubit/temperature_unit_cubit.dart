@@ -5,7 +5,7 @@ import 'package:very_good_weather/models/temperature_unit.dart';
 class TemperatureUnitCubit extends HydratedCubit<TemperatureUnit> {
   TemperatureUnitCubit() : super(TemperatureUnit.celsius);
 
-  static const _temperatureUnitJsonKey = 'temperature-unit';
+  static const _temperatureUnitJsonKey = 'temperatureUnit';
 
   void toggle() {
     final oldUnit = state;
