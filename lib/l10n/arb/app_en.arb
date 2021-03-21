@@ -1,9 +1,5 @@
 {
   "@@locale": "en",
-  "counterAppBarTitle": "Counter",
-  "@counterAppBarTitle": {
-    "description": "Text shown in the AppBar of the Counter Page"
-  },
   "temperatureUnitPickerTitle": "Temperature Unit",
   "@temperatureUnitPickerTitle": {
     "description": "Text shown as the title of the Temperature Unit Picker"
@@ -119,5 +115,13 @@
       "maximumTemperature": {
       }
     }
+  },
+  "weatherAppBarTitle": "Very Good Weather",
+  "@weatherAppBarTitle": {
+    "description": "Text shown in the AppBar of the Weather Page"
+  },
+  "weatherFailedRefreshAlertMessage": "Refresh failed. Please, try again later.",
+  "@weatherFailedRefreshAlertMessage": {
+    "description": "Text shown when a refresh fails in the Weather Page."
   }
 }

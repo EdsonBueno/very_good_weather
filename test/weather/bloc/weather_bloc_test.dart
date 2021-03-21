@@ -11,7 +11,7 @@ import 'package:weather_repository/weather_repository.dart';
 
 import '../../helpers/helpers.dart';
 
-const sanFranciscoWeatherObservation = WeatherObservation(
+const _sanFranciscoWeatherObservation = WeatherObservation(
   locationName: 'San Francisco',
   minimumTemperatureInCelsius: 7,
   maximumTemperatureInCelsius: 15,
@@ -19,9 +19,9 @@ const sanFranciscoWeatherObservation = WeatherObservation(
   status: WeatherStatus.lightRain,
 );
 
-const locationQueryInput = 'san';
+const _locationQueryInput = 'san';
 
-final sanFranciscoSuccessState = WeatherLoadSuccess(
+final _sanFranciscoSuccessState = WeatherLoadSuccess(
   locationName: 'San Francisco',
   minimumTemperature: 7,
   maximumTemperature: 15,
@@ -30,7 +30,7 @@ final sanFranciscoSuccessState = WeatherLoadSuccess(
   updateDate: DateTime.now(),
 );
 
-class MockWeatherRepository extends Mock implements WeatherRepository {}
+class _MockWeatherRepository extends Mock implements WeatherRepository {}
 
 void main() {
   setUpAll(setUpHydratedBloc);
@@ -49,7 +49,7 @@ void main() {
     });
 
     setUp(() {
-      weatherRepository = MockWeatherRepository();
+      weatherRepository = _MockWeatherRepository();
 
       locationSearchStreamController = StreamController();
       locationSearchBloc = MockLocationSearchBloc();
@@ -85,7 +85,7 @@ void main() {
     });
 
     group('WeatherTemperatureUnitChanged', () {
-      final successInCelsius = sanFranciscoSuccessState;
+      final successInCelsius = _sanFranciscoSuccessState;
       final successInFahrenheit =
           successInCelsius.copyWithToggledTemperatureUnit(
         TemperatureUnit.fahrenheit,
@@ -141,13 +141,13 @@ void main() {
         'emits WeatherLoadSuccess if the repository answers successfully',
         build: () {
           when(
-            () => weatherRepository.getWeatherObservation(locationQueryInput),
-          ).thenAnswer((_) async => sanFranciscoWeatherObservation);
+            () => weatherRepository.getWeatherObservation(_locationQueryInput),
+          ).thenAnswer((_) async => _sanFranciscoWeatherObservation);
 
           return bloc;
         },
         act: (bloc) {
-          bloc.add(const WeatherNewLocationQueryEntered(locationQueryInput));
+          bloc.add(const WeatherNewLocationQueryEntered(_locationQueryInput));
         },
         expect: () => [
           const WeatherLoadInProgress(),
@@ -159,12 +159,12 @@ void main() {
         'emits WeatherLoadFailure if the repository answers with an error',
         build: () {
           when(
-            () => weatherRepository.getWeatherObservation(locationQueryInput),
+            () => weatherRepository.getWeatherObservation(_locationQueryInput),
           ).thenAnswer((_) async => throw NoInternetException());
           return bloc;
         },
         act: (bloc) {
-          bloc.add(const WeatherNewLocationQueryEntered(locationQueryInput));
+          bloc.add(const WeatherNewLocationQueryEntered(_locationQueryInput));
         },
         expect: () => [
           const WeatherLoadInProgress(),
@@ -178,7 +178,7 @@ void main() {
           when(
             () => weatherRepository.getWeatherObservation(any()),
           ).thenAnswer(
-            (_) async => sanFranciscoWeatherObservation,
+            (_) async => _sanFranciscoWeatherObservation,
           );
           return bloc;
         },
@@ -193,7 +193,7 @@ void main() {
     });
 
     group('WeatherRefreshed', () {
-      final previousSuccessState = sanFranciscoSuccessState;
+      final previousSuccessState = _sanFranciscoSuccessState;
       final previousFailedRefreshSuccessState = previousSuccessState.copyWith(
         failedRefreshDate: DateTime.now(),
       );
@@ -204,7 +204,7 @@ void main() {
           when(
             () => weatherRepository.getWeatherObservation(any()),
           ).thenAnswer(
-            (_) async => sanFranciscoWeatherObservation,
+            (_) async => _sanFranciscoWeatherObservation,
           );
 
           return bloc;
@@ -223,7 +223,7 @@ void main() {
         'emits new WeatherLoadSuccess if the repository answers with an error',
         build: () {
           when(
-            () => weatherRepository.getWeatherObservation(locationQueryInput),
+            () => weatherRepository.getWeatherObservation(_locationQueryInput),
           ).thenAnswer((_) async => throw NoInternetException());
           return bloc;
         },
@@ -259,11 +259,11 @@ void main() {
       blocTest<WeatherBloc, WeatherState>(
         'emits new WeatherLoadSuccess if the repository answers successfully',
         build: () {
-          when(() => locationSearchBloc.state).thenReturn(locationQueryInput);
+          when(() => locationSearchBloc.state).thenReturn(_locationQueryInput);
           when(
-            () => weatherRepository.getWeatherObservation(locationQueryInput),
+            () => weatherRepository.getWeatherObservation(_locationQueryInput),
           ).thenAnswer(
-            (_) async => sanFranciscoWeatherObservation,
+            (_) async => _sanFranciscoWeatherObservation,
           );
           return bloc;
         },
@@ -282,9 +282,9 @@ void main() {
       blocTest<WeatherBloc, WeatherState>(
         'emits WeatherLoadFailure if the repository answers with an error',
         build: () {
-          when(() => locationSearchBloc.state).thenReturn(locationQueryInput);
+          when(() => locationSearchBloc.state).thenReturn(_locationQueryInput);
           when(
-            () => weatherRepository.getWeatherObservation(locationQueryInput),
+            () => weatherRepository.getWeatherObservation(_locationQueryInput),
           ).thenAnswer(
             (_) async => throw NoInternetException(),
           );
@@ -313,7 +313,7 @@ void main() {
       });
 
       test('works if state is WeatherLoadSuccess', () {
-        final originalState = sanFranciscoSuccessState;
+        final originalState = _sanFranciscoSuccessState;
         final serializedState = bloc.toJson(originalState);
         if (serializedState != null) {
           final deserializedState = bloc.fromJson(serializedState);
