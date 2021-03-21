@@ -87,5 +87,37 @@
   "weatherClearStatusTitle": "Clear",
   "@weatherClearStatusTitle": {
     "description": "Text representation of the Clear status in the Weather Page."
+  },
+  "weatherObservationLastUpdateDate": "Last updated on {date} at {time}",
+  "@weatherObservationLastUpdateDate": {
+    "description": "Text shown in the Weather Page to inform the last update date.",
+    "placeholders": {
+      "date": {
+        "type": "DateTime",
+        "format": "yMd"
+      },
+      "time": {
+        "type": "DateTime",
+        "format": "Hm"
+      }
+    }
+  },
+  "weatherObservationCurrentTemperature": "{temperature}°",
+  "@weatherObservationCurrentTemperature": {
+    "description": "Text shown to indicate the current temperature in the Weather Page.",
+    "placeholders": {
+      "temperature": {
+      }
+    }
+  },
+  "weatherObservationMinimumAndMaximumTemperature": "{minimumTemperature}°/{maximumTemperature}°",
+  "@weatherObservationMinimumAndMaximumTemperature": {
+    "description": "Text shown to indicate the minimum and maximum temperatures in the Weather Page.",
+    "placeholders": {
+      "minimumTemperature": {
+      },
+      "maximumTemperature": {
+      }
+    }
   }
 }
