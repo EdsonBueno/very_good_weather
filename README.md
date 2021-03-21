@@ -2,7 +2,7 @@
 
 [![Very Good Ventures][logo]][very_good_ventures_link]
 
-[![coverage][coverage_badge]][coverage_link]
+![coverage][coverage_badge]
 [![style: very good analysis][very_good_analysis_badge]][very_good_analysis_link]
 [![License: MIT][license_badge]][license_link]
 
@@ -62,8 +62,7 @@ $ genhtml coverage/lcov.info -o coverage/
 $ open coverage/index.html
 ```
 
-[coverage_badge]: https://codecov.io/gh/EdsonBueno/very_good_weather/branch/main/graph/badge.svg?token=N09X1DBFMP
-[coverage_link]: https://codecov.io/gh/EdsonBueno/very_good_weather
+[coverage_badge]: coverage_badge.svg
 [license_badge]: https://img.shields.io/badge/license-MIT-blue.svg
 [license_link]: https://opensource.org/licenses/MIT
 [logo]: https://raw.githubusercontent.com/VeryGoodOpenSource/very_good_analysis/main/assets/vgv_logo.png
