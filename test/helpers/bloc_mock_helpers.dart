@@ -5,6 +5,7 @@ import 'package:mocktail/mocktail.dart';
 import 'package:very_good_weather/location_search/bloc/location_search_bloc.dart';
 import 'package:very_good_weather/models/temperature_unit.dart';
 import 'package:very_good_weather/temperature_unit/cubit/temperature_unit_cubit.dart';
+import 'package:very_good_weather/weather/bloc/weather_bloc.dart';
 
 class MockTemperatureUnitCubit extends MockCubit<TemperatureUnit>
     implements TemperatureUnitCubit {}
@@ -33,4 +34,14 @@ void registerLocationSearchBlocFallbackValues() {
   registerFallbackValue<LocationSearchInputChanged>(
     LocationSearchInputChanged(''),
   );
+}
+
+class MockWeatherBloc extends MockBloc<WeatherEvent, WeatherState>
+    implements WeatherBloc {}
+
+void registerWeatherBlocFallbackValues() {
+  registerFallbackValue<WeatherEvent>(
+    const WeatherLoadRetried(),
+  );
+  registerFallbackValue<WeatherState>(const WeatherInitial());
 }
