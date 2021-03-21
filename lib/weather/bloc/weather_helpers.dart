@@ -57,6 +57,7 @@ extension TemperatureConversionUtils on WeatherLoadSuccess {
       minimumTemperature: newMinimumTemperature,
       maximumTemperature: newMaximumTemperature,
       currentTemperature: newCurrentTemperature,
+      failedRefreshDate: null,
     );
   }
 }

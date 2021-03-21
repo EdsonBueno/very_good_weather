@@ -153,6 +153,25 @@ void main() {
           );
         });
       });
+
+      test('sets isFromFailedRefresh back to false', () {
+        final failedRefreshSuccessState = WeatherLoadSuccess(
+          locationName: locationName,
+          minimumTemperature: minimumTemperatureInCelsius,
+          maximumTemperature: maximumTemperatureInCelsius,
+          currentTemperature: currentTemperatureInCelsius,
+          status: WeatherStatus.lightCloud,
+          updateDate: DateTime.now(),
+          failedRefreshDate: DateTime.now(),
+        );
+
+        final convertedState =
+            failedRefreshSuccessState.copyWithToggledTemperatureUnit(
+          TemperatureUnit.fahrenheit,
+        );
+
+        expect(convertedState.isFromFailedRefresh, false);
+      });
     });
   });
 

@@ -71,7 +71,8 @@ class WeatherLoadSuccess extends WeatherState {
     double? currentTemperature,
     WeatherStatus? status,
     DateTime? updateDate,
-    DateTime? failedRefreshDate,
+    // failedRefreshDate can actually be null so we require it to be specified
+    required DateTime? failedRefreshDate,
   }) {
     return WeatherLoadSuccess(
       locationName: locationName ?? this.locationName,
@@ -80,7 +81,8 @@ class WeatherLoadSuccess extends WeatherState {
       currentTemperature: currentTemperature ?? this.currentTemperature,
       status: status ?? this.status,
       updateDate: updateDate ?? this.updateDate,
-      failedRefreshDate: failedRefreshDate ?? _failedRefreshDate,
+      // failedRefreshDate can actually be null
+      failedRefreshDate: failedRefreshDate,
     );
   }
 
