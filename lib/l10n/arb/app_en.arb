@@ -31,5 +31,21 @@
   "weatherInitialInstruction": "Use the search bar above to search for a location.",
   "@weatherInitialInstruction": {
     "description": "Text shown in the initial state of the Weather Page."
+  },
+  "weatherLoadFailureTryAgainAction": "Try Again",
+  "@weatherLoadFailureTryAgainAction": {
+    "description": "Text shown in the Try Again Button of the Weather Page."
+  },
+  "weatherLoadFailureNoInternetDescription": "It looks like you don't have internet access. Please check your connection and try again.",
+  "@weatherLoadFailureNoInternetDescription": {
+    "description": "Text description of a 'no connection' error in the Weather Page."
+  },
+  "weatherLoadFailureUnknownDescription": "An unknown error occurred. Please try again later.",
+  "@weatherLoadFailureUnknownDescription": {
+    "description": "Text description of an unknown error in the Weather Page."
+  },
+  "weatherLoadFailureLocationNotFoundDescription": "We couldn't find a location for the entered text.",
+  "@weatherLoadFailureLocationNotFoundDescription": {
+    "description": "Text description of a 'location not found' error in the Weather Page."
   }
 }
