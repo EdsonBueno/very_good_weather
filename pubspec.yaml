@@ -1,5 +1,5 @@
 name: very_good_weather
-description: A new Flutter project.
+description: Look up the weather for any location using data from the MetaWeather API.
 version: 1.0.0+1
 publish_to: none
 
@@ -21,6 +21,7 @@ dependencies:
   rxdart: ^0.26.0
   weather_repository:
     path: packages/weather_repository
+  lottie: ^1.0.1
 
 dev_dependencies:
   flutter_test:
