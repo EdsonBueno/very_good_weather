@@ -47,5 +47,45 @@
   "weatherLoadFailureLocationNotFoundDescription": "We couldn't find a location for the entered text.",
   "@weatherLoadFailureLocationNotFoundDescription": {
     "description": "Text description of a 'location not found' error in the Weather Page."
+  },
+  "weatherSnowStatusTitle": "Snow",
+  "@weatherSnowStatusTitle": {
+    "description": "Text representation of the Snow status in the Weather Page."
+  },
+  "weatherSleetStatusTitle": "Sleet",
+  "@weatherSleetStatusTitle": {
+    "description": "Text representation of the Sleet status in the Weather Page."
+  },
+  "weatherHailStatusTitle": "Hail",
+  "@weatherHailStatusTitle": {
+    "description": "Text representation of the Hail status in the Weather Page."
+  },
+  "weatherThunderstormStatusTitle": "Thunderstorm",
+  "@weatherThunderstormStatusTitle": {
+    "description": "Text representation of the Thunderstorm status in the Weather Page."
+  },
+  "weatherHeavyRainStatusTitle": "Heavy Rain",
+  "@weatherHeavyRainStatusTitle": {
+    "description": "Text representation of the Heavy Rain status in the Weather Page."
+  },
+  "weatherLightRainStatusTitle": "Light Rain",
+  "@weatherLightRainStatusTitle": {
+    "description": "Text representation of the Light Rain status in the Weather Page."
+  },
+  "weatherShowersStatusTitle": "Showers",
+  "@weatherShowersStatusTitle": {
+    "description": "Text representation of the Showers status in the Weather Page."
+  },
+  "weatherHeavyCloudStatusTitle": "Heavy Cloud",
+  "@weatherHeavyCloudStatusTitle": {
+    "description": "Text representation of the Heavy Cloud status in the Weather Page."
+  },
+  "weatherLightCloudStatusTitle": "Light Cloud",
+  "@weatherLightCloudStatusTitle": {
+    "description": "Text representation of the Light Cloud status in the Weather Page."
+  },
+  "weatherClearStatusTitle": "Clear",
+  "@weatherClearStatusTitle": {
+    "description": "Text representation of the Clear status in the Weather Page."
   }
 }
