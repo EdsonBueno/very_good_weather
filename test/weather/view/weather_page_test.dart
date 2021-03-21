@@ -46,7 +46,10 @@ void main() {
     testWidgets('uses provided key', (tester) async {
       final key = UniqueKey();
 
-      await tester.pumpWeatherPage(key: key);
+      await tester.pumpWeatherView(
+        key: key,
+        mockBloc: mockBloc,
+      );
 
       expect(find.byKey(key), findsOneWidget);
     });
@@ -54,13 +57,9 @@ void main() {
     testWidgets('releases search bar focus on tap outside', (tester) async {
       final key = UniqueKey();
 
-      await tester.pumpApp(
-        BlocProvider<WeatherBloc>.value(
-          value: mockBloc,
-          child: WeatherView(
-            key: key,
-          ),
-        ),
+      await tester.pumpWeatherView(
+        key: key,
+        mockBloc: mockBloc,
       );
 
       final searchBarFinder = find.byKey(
@@ -82,6 +81,68 @@ void main() {
       final isSearchBarFocused = searchBarScope.hasFocus;
 
       expect(isSearchBarFocused, false);
+    });
+
+    testWidgets('matches golden file for WeatherLoadSuccess', (tester) async {
+      final successState = WeatherLoadSuccess(
+        locationName: 'San Francisco',
+        minimumTemperature: -2,
+        maximumTemperature: 2,
+        currentTemperature: 0,
+        status: WeatherStatus.heavyRain,
+        updateDate: DateTime.now(),
+      );
+
+      await tester.expectWeatherViewMatchesGoldenFileForState(
+        state: successState,
+        goldenFileName: 'goldens/weather-load-success.png',
+        mockBloc: mockBloc,
+      );
+    });
+
+    testWidgets('matches golden file for WeatherInitial', (tester) async {
+      await tester.expectWeatherViewMatchesGoldenFileForState(
+        state: const WeatherInitial(),
+        goldenFileName: 'goldens/weather-initial.png',
+        mockBloc: mockBloc,
+      );
+    });
+
+    testWidgets('matches golden file for WeatherLoadInProgress',
+        (tester) async {
+      await tester.expectWeatherViewMatchesGoldenFileForState(
+        state: const WeatherLoadInProgress(),
+        goldenFileName: 'goldens/weather-load-in-progress.png',
+        mockBloc: mockBloc,
+      );
+    });
+
+    testWidgets('matches golden file for WeatherLoadFailure with noInternet',
+        (tester) async {
+      await tester.expectWeatherViewMatchesGoldenFileForState(
+        state: const WeatherLoadFailure(FailureReason.noInternet),
+        goldenFileName: 'goldens/weather-load-failure-no-internet.png',
+        mockBloc: mockBloc,
+      );
+    });
+
+    testWidgets('matches golden file for WeatherLoadFailure with unknown',
+        (tester) async {
+      await tester.expectWeatherViewMatchesGoldenFileForState(
+        state: const WeatherLoadFailure(FailureReason.unknown),
+        goldenFileName: 'goldens/weather-load-failure-unknown.png',
+        mockBloc: mockBloc,
+      );
+    });
+
+    testWidgets(
+        'matches golden file for WeatherLoadFailure with locationNotFound',
+        (tester) async {
+      await tester.expectWeatherViewMatchesGoldenFileForState(
+        state: const WeatherLoadFailure(FailureReason.locationNotFound),
+        goldenFileName: 'goldens/weather-load-failure-location-not-found.png',
+        mockBloc: mockBloc,
+      );
     });
   });
 
@@ -248,6 +309,37 @@ extension on WidgetTester {
           key: key,
         ),
       ),
+    );
+  }
+
+  Future<void> pumpWeatherView({
+    required MockWeatherBloc mockBloc,
+    Key? key,
+  }) {
+    return pumpApp(
+      BlocProvider<WeatherBloc>.value(
+        value: mockBloc,
+        child: WeatherView(
+          key: key,
+        ),
+      ),
+    );
+  }
+
+  Future<void> expectWeatherViewMatchesGoldenFileForState({
+    required WeatherState state,
+    required String goldenFileName,
+    required MockWeatherBloc mockBloc,
+  }) async {
+    when(() => mockBloc.state).thenReturn(
+      state,
+    );
+
+    await pumpWeatherView(mockBloc: mockBloc);
+
+    await expectLater(
+      find.byType(WeatherView),
+      matchesGoldenFile(goldenFileName),
     );
   }
 }

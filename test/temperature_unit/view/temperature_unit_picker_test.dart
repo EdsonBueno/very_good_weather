@@ -22,6 +22,26 @@ void main() {
       cubit = MockTemperatureUnitCubit();
     });
 
+    testWidgets('matches golden file', (tester) async {
+      when(() => cubit.state).thenReturn(
+        TemperatureUnit.celsius,
+      );
+
+      final pickerKey = UniqueKey();
+
+      await tester.pumpApp(
+        TemperatureUnitPicker(
+          cubit: cubit,
+          key: pickerKey,
+        ),
+      );
+
+      await expectLater(
+        find.byKey(pickerKey),
+        matchesGoldenFile('goldens/temperature-unit-picker.png'),
+      );
+    });
+
     testWidgets('is dismissed on button tap', (tester) async {
       when(() => cubit.state).thenReturn(
         TemperatureUnit.celsius,
